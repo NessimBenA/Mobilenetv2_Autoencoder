@@ -34,7 +34,11 @@ The model is trained for 25 epochs with Adam (learning rate 0.001, batch size 10
 | --- | --- | --- |
 | MSE after 25 epochs | 0.0879 | 0.0220 |
 
-That is a PSNR of 16.6 dB, computed from the mean test MSE. The test MSE was still going down slowly at epoch 25:
+That is a PSNR of 16.6 dB, computed from the mean test MSE.
+
+The skip connections matter. In a separate run with `use_residual` set to False in every block and the same seed and recipe, the train MSE stops improving at about 0.122 after epoch 16 and the test MSE ends at 0.1351.
+
+With them, the test MSE was still going down slowly at epoch 25:
 
 ![Train and test MSE per epoch](figures/loss_curve.png)
 
